@@ -6,12 +6,14 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { DeportistasComponent } from './deportistas/deportistas.component';
 import { DeportistasDetailComponent } from './deportistas-detail/deportistas-detail.component';
+import {VideoPlayerComponent} from "./video-player/video-player.component";
 
 @NgModule({
   declarations: [
     AppComponent,
     DeportistasComponent,
-    DeportistasDetailComponent
+    DeportistasDetailComponent,
+    VideoPlayerComponent
   ],
   imports: [
     BrowserModule,
