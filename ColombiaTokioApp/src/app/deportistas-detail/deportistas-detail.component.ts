@@ -7,6 +7,7 @@ import {Participacion} from "../participacion";
 import {ParticipacionService} from "../participacion.service";
 
 import {DeportistaService} from '../deportista.service';
+import {DomSanitizer, SafeUrl} from "@angular/platform-browser";
 
 
 @Component({
@@ -20,18 +21,20 @@ export class DeportistasDetailComponent implements OnInit {
   @Input() participacion: Participacion[];
 
   constructor(
-  private route: ActivatedRoute,
-  private deportistaService: DeportistaService,
-  private participacionService: ParticipacionService,
-  private location: Location
-  
-
+    private route: ActivatedRoute,
+    private deportistaService: DeportistaService,
+    private participacionService: ParticipacionService,
+    private location: Location,
+    private sanitizer: DomSanitizer
   ) { }
 
   ngOnInit(): void {
     this.getDeportista();
     this.getParticipacion();
 
+  }
+  cleanURL(oldURL ): SafeUrl {
+    return this.sanitizer.bypassSecurityTrustResourceUrl(oldURL);
   }
 
   getDeportista(): void {
@@ -50,6 +53,6 @@ export class DeportistasDetailComponent implements OnInit {
   goBack(): void {
     this.location.back();
  }
- 
-  
+
+
 }
