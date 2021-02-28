@@ -7,7 +7,9 @@
       <label>Peso: {{deportista.peso}} kg</label><br />
       <label>Entrenador: {{deportista.entrenador}}</label><br />
     </div>
+    <li *ngFor="let participa of participacion" routerLink = "{{deportista.id}}">
+      <iframe id='player' type='text/html' width='400' height='200' [src]="cleanURL(participa.video)"  frameborder='0'></iframe>
+    </li>
 </div>
 
 <button (click)="goBack()">Go back</button>
-
