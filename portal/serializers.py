@@ -4,14 +4,12 @@ from .models import Deportista, Participacion, Deporte
 
 
 class UserSerializer(serializers.ModelSerializer):
-
     class Meta:
         model = User
         fields = ('first_name', 'last_name')
 
 
 class DeporteSerializer(serializers.ModelSerializer):
-
     class Meta:
         model = Deporte
         fields = ('nombre', 'icono')
@@ -25,10 +23,27 @@ class DeportistaSerializer(serializers.ModelSerializer):
         fields = ('user', 'imagen')
 
 
-class ParticipacionSerializer(serializers.ModelSerializer):
+class ParticipacionSerializer1(serializers.ModelSerializer):
     deportista = DeportistaSerializer(read_only=True)
     deporte = DeporteSerializer(read_only=True)
 
     class Meta:
         model = Participacion
         fields = ('deporte', 'deportista')
+
+
+class DeportistasSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Deportista
+        fields = [
+            'user', 'fecha_nacimiento', 'peso', 'estatura', 'entrenador',
+            'imagen', 'lugar_nacimiento'
+        ]
+
+
+class ParticipacionSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Participacion
+        fields = [
+            'fecha', 'hora', 'deporte', 'deportista', 'modalidad', 'resultado'
+        ]
