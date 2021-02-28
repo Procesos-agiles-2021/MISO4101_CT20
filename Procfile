@@ -1,1 +1,1 @@
-web: gunicorn ColombiaTokio2020.wsgi --log-file -
+web: npm run start:prod
