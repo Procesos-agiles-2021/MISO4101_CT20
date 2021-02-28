@@ -7,6 +7,9 @@
       <label>Peso: {{deportista.peso}} kg</label><br />
       <label>Entrenador: {{deportista.entrenador}}</label><br />
     </div>
+    <div [(ngModel)]="participacion">
+      <iframe id='{{participacion.id}}' type='text/html' width='640' height='390' src='{{participacion.video}}' frameborder='0'></iframe>
+    </div>
 </div>
 
 <button (click)="goBack()">Go back</button>
