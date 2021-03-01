@@ -1,9 +1,9 @@
 from django.shortcuts import render
 from django.urls import reverse
 from django.http import HttpResponse, HttpResponseRedirect
-from .models import Participacion, Deportista, Video
+from .models import Participacion, Deportista, Video, Comentario, User
 # from .models import Participacion, UserForm
-from .serializers import ParticipacionSerializer, DeportistaSerializer, DeportistasSerializer, VideoSerializer
+from .serializers import ParticipacionSerializer, DeportistaSerializer, DeportistasSerializer, VideoSerializer, ComentarioSerializer
 from django.shortcuts import redirect
 from rest_framework.renderers import TemplateHTMLRenderer
 from rest_framework.views import APIView
@@ -142,3 +142,24 @@ def videos_list(request, pk, pkP):
         videos = Video.objects.filter(participacion=participacion)
         serializer = VideoSerializer(videos, many=True)
         return Response(serializer.data)
+
+@api_view(['GET', 'POST'])
+def comentarios_list(request, pk, pkP):
+    try:
+        participacion = Participacion.objects.get(pk=pkP)
+    except Participacion.DoesNotExist:
+        return Response(status=status.HTTP_400_BAD_REQUEST)
+    try:
+        video = Video.objects.filter(participacion=participacion)
+    except Video.DoesNotExist:
+        return Response(status=status.HTTP_400_BAD_REQUEST)
+    if request.method == 'GET':
+        comments = Comentario.objects.filter(video=video[0])
+        serializer = ComentarioSerializer(comments, many=True)
+        return Response(serializer.data)
+
+    elif request.method == 'POST':
+        serializer = DeportistasSerializer(data=request.data)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data, status=status.HTTP_201_CREATED)

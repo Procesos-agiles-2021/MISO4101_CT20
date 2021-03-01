@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
 import {PARTICIPACIONES} from "./mock-participaciones";
 import {Participacion} from "./participacion";
+import {Comentario} from "./comentario";
 import { HttpClient } from  '@angular/common/http';
 import {Video} from "./video";
 
@@ -13,6 +14,8 @@ export class ParticipacionService {
   API_URL  =  'http://localhost:8000';
   private participaciones: Array<Participacion>;
   private videos: Array<Video>;
+  private comentarios: Array<Comentario>;
+
   constructor(private  httpClient:  HttpClient) { }
 
   getParticipaciones(user_id: number): Observable<Participacion[]> {
@@ -43,10 +46,24 @@ export class ParticipacionService {
         let video = new Video();
             video.id = dataItem.id;
             video.url = dataItem.url;
-            video.comentarios= [];
             this.videos.push(video);
         });
       });
     return of(this.videos);
+    }
+
+    getComentarios(user_id: number, part_id: number): Observable<Comentario[]> {
+    this.comentarios=[];
+    this.httpClient.get(`${this.API_URL}/deportistas/`+user_id+`/participaciones/`+part_id+'/video/comentarios').subscribe((data:  Array<any>) => {
+      data.forEach( dataItem => {
+        let comment = new Comentario();
+            comment.id = dataItem.id;
+            comment.autor = dataItem.username;
+            comment.texto = dataItem.texto;
+            comment.fecha = dataItem.fecha;
+            this.comentarios.push(comment);
+        });
+      });
+    return of(this.comentarios);
     }
   }

@@ -12,6 +12,7 @@ urlpatterns = [
     path('deportistas/<int:pk>/participaciones', views.participaciones_list),
     path('deportistas/<int:pk>/participaciones/<int:pkP>', views.participacion_detail),
     path('deportistas/<int:pk>/participaciones/<int:pkP>/video', views.videos_list),
+    path('deportistas/<int:pk>/participaciones/<int:pkP>/video/comentarios', views.comentarios_list),
 
     #path('deportistas/<int:pk>', views.deportist_detail),
     #url(r'adduser/$', views.add_user, name='addUser'),

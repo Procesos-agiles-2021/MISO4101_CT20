@@ -95,6 +95,7 @@ class Video(models.Model):
 class Comentario(models.Model):
     texto = models.CharField(max_length=1000)
     usuario_registrado = models.ForeignKey(User, on_delete=models.CASCADE)
+    username = models.CharField(max_length = 250)
     fecha = models.DateTimeField(null=False)
     video = models.ForeignKey(Video, on_delete=models.CASCADE)
 

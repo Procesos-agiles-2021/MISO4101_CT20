@@ -5,8 +5,8 @@
     <iframe id='player' type='text/html' width='400' height='200' [src]="cleanURL(video.url)"  frameborder='0'></iframe>
     <h4> Comentarios: </h4>
       <ul>
-        <li *ngFor="let comment of video.comentarios">
-          <label>Autor: {{comment.autor}} - Posted on: {{comment.fecha}} </label><br />
+        <li *ngFor="let comment of comentarios">
+          <label><b>Autor:</b> {{comment.autor}} - <b>Posted on:</b> {{comment.fecha}} </label><br />
           <label>{{comment.texto}}</label><br />
         </li>
       </ul>

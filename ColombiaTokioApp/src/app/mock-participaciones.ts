@@ -8,8 +8,7 @@ export const PARTICIPACIONES: Participacion[] =
     fecha: '27/04/2020',
     hora: '08:30',
     modalidad: 'Peso Pesado',
-    resultado: '2',
-    videoObj: {id: 1, url:'https://www.youtube.com/embed/GGjHZZGR-DU', comentarios:[{id: 1, autor:'Kars', texto:'Que fuerza', fecha:'27/02/2021'}]}
+    resultado: '2'
   },
   {
     id: 2,
@@ -17,7 +16,6 @@ export const PARTICIPACIONES: Participacion[] =
     fecha: '27/04/2020',
     hora: '08:30',
     modalidad: 'Peso Pesado',
-    resultado: '2',
-    videoObj: {id: 2, url:'https://www.youtube.com/embed/Q1raFMDRi_Q', comentarios:[]}
+    resultado: '2'
   }
 ]

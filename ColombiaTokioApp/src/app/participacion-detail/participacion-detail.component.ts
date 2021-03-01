@@ -5,6 +5,7 @@ import { Location } from '@angular/common';
 
 import {Participacion} from "../participacion";
 import {Video} from "../video";
+import {Comentario} from "../comentario";
 import {ParticipacionService} from "../participacion.service";
 
 import {DeportistaService} from '../deportista.service';
@@ -21,6 +22,7 @@ export class ParticipacionDetailComponent implements OnInit {
   @Input() deportista: Deportista;
   @Input() participacion: Participacion;
   @Input() videos: Video[];
+  @Input() comentarios: Comentario[];
 
   constructor(
     private route: ActivatedRoute,
@@ -34,7 +36,7 @@ export class ParticipacionDetailComponent implements OnInit {
     this.getDeportista();
     this.getParticipacion();
     this.getVideos();
-
+    this.getComentarios();
   }
   cleanURL(oldURL ): SafeUrl {
     return this.sanitizer.bypassSecurityTrustResourceUrl(oldURL);
@@ -57,6 +59,13 @@ export class ParticipacionDetailComponent implements OnInit {
     const idP = +this.route.snapshot.paramMap.get('idP');
     this.participacionService.getVideo(id, idP)
       .subscribe(videos => this.videos = videos);
+  }
+
+  getComentarios(): void {
+    const id = +this.route.snapshot.paramMap.get('id');
+    const idP = +this.route.snapshot.paramMap.get('idP');
+    this.participacionService.getComentarios(id, idP)
+      .subscribe(comentarios => this.comentarios = comentarios);
   }
 
   goBack(): void {

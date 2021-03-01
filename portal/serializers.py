@@ -1,6 +1,6 @@
 from rest_framework import serializers
 from django.contrib.auth.models import User
-from .models import Deportista, Participacion, Deporte, Video
+from .models import Deportista, Participacion, Deporte, Video, Comentario
 
 
 class UserSerializer(serializers.ModelSerializer):
@@ -52,4 +52,12 @@ class VideoSerializer(serializers.ModelSerializer):
         model = Video
         fields = (
             'id', 'url', 'participacion'
+        )
+
+
+class ComentarioSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Comentario
+        fields = (
+            'id', 'texto', 'usuario_registrado', 'username', 'fecha'
         )

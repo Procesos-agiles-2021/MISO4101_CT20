@@ -1,5 +1,3 @@
-import { Video } from './video';
-
 export class Participacion {
     id: number;
     deportista: number;
@@ -8,5 +6,4 @@ export class Participacion {
     hora: string;
     modalidad: string;
     resultado: string;
-    videoObj: Video;
 }
