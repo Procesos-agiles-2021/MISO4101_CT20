@@ -24,7 +24,6 @@ export class ParticipacionService {
             participacion1.hora = dataItem.hora;
             participacion1.modalidad = dataItem.modalidad;
             participacion1.resultado = dataItem.resultado;
-
             this.participaciones.push(participacion1)
         });
       });

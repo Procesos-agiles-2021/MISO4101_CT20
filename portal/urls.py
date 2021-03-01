@@ -9,7 +9,7 @@ urlpatterns = [
     path('calendario/<int:pk>', views.calendar_detail),
     path('deportistas/', views.deportista_list),
     path('deportistas/<int:pk>', views.deportist_detail),
-    path('deportistas/<int:pk>/participaciones', views.deportist_detail),
+    path('deportistas/<int:pk>/participaciones', views.participaciones_list),
 
 
     #path('deportistas/<int:pk>', views.deportist_detail),

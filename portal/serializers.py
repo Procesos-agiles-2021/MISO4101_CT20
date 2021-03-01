@@ -45,3 +45,4 @@ class ParticipacionSerializer(serializers.ModelSerializer):
         fields = (
             'id','fecha', 'hora', 'deporte', 'deportista', 'modalidad', 'resultado'
         )
+

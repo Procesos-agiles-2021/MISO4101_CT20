@@ -77,6 +77,7 @@ def calendar_detail(request, pk):
 def deportista_list(request):
     if request.method == 'GET':
         deportists = Deportista.objects.all()
+        print(deportists)
         serializer = DeportistasSerializer(deportists, many=True)
         return Response(serializer.data)
 
@@ -115,6 +116,6 @@ def participaciones_list(request, pk):
         return Response(status=status.HTTP_400_BAD_REQUEST)
 
     if request.method == 'GET':
-        partipaciones = Participacion.objects.filter(deportista=deportist)
-        serializer = ParticipacionSerializer([partipaciones], many=True)
+        participaciones = Participacion.objects.filter(deportista=deportist)
+        serializer = ParticipacionSerializer(participaciones, many=True)
         return Response(serializer.data)

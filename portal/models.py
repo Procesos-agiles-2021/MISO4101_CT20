@@ -28,7 +28,7 @@ class Deportista(models.Model):
         verbose_name_plural = 'Deportistas'
 
     def __str__(self) -> str:
-        return f'{self.user.first_name} {self.user.last_name}'
+        return f'{self.nombre} '
 
 
 # class UsuarioRegistrado(models.Model):
@@ -79,9 +79,6 @@ class Participacion(models.Model):
 
     class Meta:
         verbose_name_plural = 'Participaciones'
-
-    def __str__(self) -> str:
-        return f'{self.deporte} - {self.deportista}'
 
 
 class Video(models.Model):
