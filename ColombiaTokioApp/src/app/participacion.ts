@@ -1,4 +1,4 @@
-import { Lugar } from './lugar';
+import { Video } from './video';
 
 export class Participacion {
     id: number;
@@ -7,5 +7,5 @@ export class Participacion {
     hora: string;
     modalidad: string;
     resultado: string;
-    video: string;
+    videoObj: Video;
 }

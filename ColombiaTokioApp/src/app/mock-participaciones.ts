@@ -9,7 +9,7 @@ export const PARTICIPACIONES: Participacion[] =
     hora: '08:30',
     modalidad: 'Peso Pesado',
     resultado: '2',
-    video: 'https://www.youtube.com/embed/GGjHZZGR-DU'
+    videoObj: {id: 1, url:'https://www.youtube.com/embed/GGjHZZGR-DU', comentarios:[{id: 1, autor:'Kars', texto:'Que fuerza', fecha:'27/02/2021'}]}
   },
   {
     id: 2,
@@ -18,6 +18,6 @@ export const PARTICIPACIONES: Participacion[] =
     hora: '08:30',
     modalidad: 'Peso Pesado',
     resultado: '2',
-    video: 'https://www.youtube.com/embed/Q1raFMDRi_Q'
+    videoObj: {id: 2, url:'https://www.youtube.com/embed/Q1raFMDRi_Q', comentarios:[]}
   }
 ]

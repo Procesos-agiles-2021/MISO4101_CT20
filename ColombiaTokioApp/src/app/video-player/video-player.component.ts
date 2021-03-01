@@ -4,6 +4,7 @@ import { Location } from '@angular/common';
 import {Participacion} from "../participacion";
 import {ParticipacionService} from "../participacion.service";
 
+
 @Component({
   selector: 'app-video-player',
   templateUrl: './video-player.component.html',
