@@ -1,6 +1,6 @@
 from rest_framework import serializers
 from django.contrib.auth.models import User
-from .models import Deportista, Participacion, Deporte
+from .models import Deportista, Participacion, Deporte, Video
 
 
 class UserSerializer(serializers.ModelSerializer):
@@ -18,8 +18,8 @@ class DeporteSerializer(serializers.ModelSerializer):
 class DeportistaSerializer(serializers.ModelSerializer):
     class Meta:
         model = Deportista
-        fields = ('id','nombre', 'fecha_nacimiento', 'peso', 'estatura', 'entrenador',
-            'imagen', 'lugar_nacimiento')
+        fields = ('id', 'nombre', 'fecha_nacimiento', 'peso', 'estatura', 'entrenador',
+                  'imagen', 'lugar_nacimiento')
 
 
 class ParticipacionSerializer1(serializers.ModelSerializer):
@@ -28,14 +28,14 @@ class ParticipacionSerializer1(serializers.ModelSerializer):
 
     class Meta:
         model = Participacion
-        fields = ('id','deporte', 'deportista')
+        fields = ('id', 'deporte', 'deportista')
 
 
 class DeportistasSerializer(serializers.ModelSerializer):
     class Meta:
         model = Deportista
         fields = (
-            'id','nombre', 'fecha_nacimiento', 'peso', 'estatura', 'entrenador',
+            'id', 'nombre', 'fecha_nacimiento', 'peso', 'estatura', 'entrenador',
             'imagen', 'lugar_nacimiento')
 
 
@@ -43,6 +43,13 @@ class ParticipacionSerializer(serializers.ModelSerializer):
     class Meta:
         model = Participacion
         fields = (
-            'id','fecha', 'hora', 'deporte', 'deportista', 'modalidad', 'resultado'
+            'id', 'fecha', 'hora', 'deporte', 'deportista', 'modalidad', 'resultado'
         )
 
+
+class VideoSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Video
+        fields = (
+            'id', 'url', 'participacion'
+        )

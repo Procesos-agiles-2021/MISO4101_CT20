@@ -7,15 +7,9 @@
       <label>Peso: {{deportista.peso}} kg</label><br />
       <label>Entrenador: {{deportista.entrenador}}</label><br />
     </div>
-    <li *ngFor="let participa of participacion" routerLink = "{{deportista.id}}">
-      <iframe id='player' type='text/html' width='400' height='200' [src]="cleanURL(participa.videoObj.url)"  frameborder='0'></iframe>
-      <h3> Comentarios: </h3>
-      <ul>
-        <li *ngFor="let comment of participa.videoObj.comentarios">
-          <label>Autor: {{comment.autor}} - Posted on: {{comment.fecha}} </label><br />
-          <label>{{comment.texto}}</label><br />
-        </li>
-      </ul>
+    <h3>Participaciones:</h3>
+    <li *ngFor="let participa of participacion">
+      <a routerLink = "/deportistas/{{deportista.id}}/participaciones/{{participa.id}}">{{participa.fecha}} - {{participa.hora}}</a>
     </li>
 </div>
 

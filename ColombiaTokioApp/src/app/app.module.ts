@@ -9,6 +9,7 @@ import { DeportistasDetailComponent } from './deportistas-detail/deportistas-det
 import {VideoPlayerComponent} from "./video-player/video-player.component";
 import {YouTubePlayerModule} from '@angular/youtube-player';
 import { HttpClientModule } from '@angular/common/http';
+import { ParticipacionDetailComponent } from './participacion-detail/participacion-detail.component';
 
 
 
@@ -18,7 +19,8 @@ import { HttpClientModule } from '@angular/common/http';
     AppComponent,
     DeportistasComponent,
     DeportistasDetailComponent,
-    VideoPlayerComponent
+    VideoPlayerComponent,
+    ParticipacionDetailComponent
   ],
   imports: [
     BrowserModule,

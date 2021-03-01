@@ -10,7 +10,8 @@ urlpatterns = [
     path('deportistas/', views.deportista_list),
     path('deportistas/<int:pk>', views.deportist_detail),
     path('deportistas/<int:pk>/participaciones', views.participaciones_list),
-
+    path('deportistas/<int:pk>/participaciones/<int:pkP>', views.participacion_detail),
+    path('deportistas/<int:pk>/participaciones/<int:pkP>/video', views.videos_list),
 
     #path('deportistas/<int:pk>', views.deportist_detail),
     #url(r'adduser/$', views.add_user, name='addUser'),

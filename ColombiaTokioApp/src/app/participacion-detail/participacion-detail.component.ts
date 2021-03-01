@@ -4,6 +4,7 @@ import { ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
 
 import {Participacion} from "../participacion";
+import {Video} from "../video";
 import {ParticipacionService} from "../participacion.service";
 
 import {DeportistaService} from '../deportista.service';
@@ -11,14 +12,15 @@ import {DomSanitizer, SafeUrl} from "@angular/platform-browser";
 
 
 @Component({
-  selector: 'app-deportistas-detail',
-  templateUrl: './deportistas-detail.component.html',
-  styleUrls: ['./deportistas-detail.component.css']
+  selector: 'app-participacion-detail',
+  templateUrl: './participacion-detail.component.html',
+  styleUrls: ['./participacion-detail.component.css']
 })
-export class DeportistasDetailComponent implements OnInit {
+export class ParticipacionDetailComponent implements OnInit {
 
   @Input() deportista: Deportista;
-  @Input() participacion: Participacion[];
+  @Input() participacion: Participacion;
+  @Input() videos: Video[];
 
   constructor(
     private route: ActivatedRoute,
@@ -30,7 +32,8 @@ export class DeportistasDetailComponent implements OnInit {
 
   ngOnInit(): void {
     this.getDeportista();
-    this.getParticipaciones();
+    this.getParticipacion();
+    this.getVideos();
 
   }
   cleanURL(oldURL ): SafeUrl {
@@ -43,12 +46,18 @@ export class DeportistasDetailComponent implements OnInit {
       .subscribe(deportista => this.deportista = deportista);
   }
 
-  getParticipaciones(): void {
-    const id = +this.route.snapshot.paramMap.get('id');
-    this.participacionService.getParticipaciones(id)
+  getParticipacion(): void {
+    const id = +this.route.snapshot.paramMap.get('idP');
+    this.participacionService.getParticipacion(id)
       .subscribe(participacion => this.participacion = participacion);
   }
 
+  getVideos(): void {
+    const id = +this.route.snapshot.paramMap.get('id');
+    const idP = +this.route.snapshot.paramMap.get('idP');
+    this.participacionService.getVideo(id, idP)
+      .subscribe(videos => this.videos = videos);
+  }
 
   goBack(): void {
     this.location.back();
@@ -56,3 +65,4 @@ export class DeportistasDetailComponent implements OnInit {
 
 
 }
+

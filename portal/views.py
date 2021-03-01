@@ -1,9 +1,9 @@
 from django.shortcuts import render
 from django.urls import reverse
 from django.http import HttpResponse, HttpResponseRedirect
-from .models import Participacion, Deportista
+from .models import Participacion, Deportista, Video
 # from .models import Participacion, UserForm
-from .serializers import ParticipacionSerializer, DeportistaSerializer, DeportistasSerializer
+from .serializers import ParticipacionSerializer, DeportistaSerializer, DeportistasSerializer, VideoSerializer
 from django.shortcuts import redirect
 from rest_framework.renderers import TemplateHTMLRenderer
 from rest_framework.views import APIView
@@ -118,4 +118,27 @@ def participaciones_list(request, pk):
     if request.method == 'GET':
         participaciones = Participacion.objects.filter(deportista=deportist)
         serializer = ParticipacionSerializer(participaciones, many=True)
+        return Response(serializer.data)
+
+@api_view(['GET'])
+def participacion_detail(request, pk, pkP):
+    try:
+        participacion = Participacion.objects.get(pk=pkP)
+    except Participacion.DoesNotExist:
+        return Response(status=status.HTTP_400_BAD_REQUEST)
+
+    if request.method == 'GET':
+        serializer = ParticipacionSerializer(participacion)
+        return Response(serializer.data)
+
+@api_view(['GET'])
+def videos_list(request, pk, pkP):
+    try:
+        participacion = Participacion.objects.get(pk=pkP)
+    except Participacion.DoesNotExist:
+        return Response(status=status.HTTP_400_BAD_REQUEST)
+
+    if request.method == 'GET':
+        videos = Video.objects.filter(participacion=participacion)
+        serializer = VideoSerializer(videos, many=True)
         return Response(serializer.data)
