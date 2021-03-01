@@ -4,6 +4,13 @@
   <li *ngFor="let video of videos">
     <iframe id='player' type='text/html' width='400' height='200' [src]="cleanURL(video.url)"  frameborder='0'></iframe>
     <h4> Comentarios: </h4>
+    <form [formGroup]="form" (ngSubmit)="createComentario()">
+      <div>
+        <label for="mensaje"> Deja un comentario: </label>
+        <input id="mensaje" type="text" formControlName="mensaje">
+      </div>
+      <button class="button" type="submit">Comentar</button>
+    </form>
       <ul>
         <li *ngFor="let comment of comentarios">
           <label><b>Autor:</b> {{comment.autor}} - <b>Posted on:</b> {{comment.fecha}} </label><br />

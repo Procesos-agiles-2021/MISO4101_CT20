@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { FormsModule } from '@angular/forms';
-
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { DeportistasComponent } from './deportistas/deportistas.component';
@@ -27,6 +26,7 @@ import { ParticipacionDetailComponent } from './participacion-detail/participaci
     AppRoutingModule,
     YouTubePlayerModule,
     FormsModule,
+    ReactiveFormsModule,
     HttpClientModule,
   ],
   providers: [],

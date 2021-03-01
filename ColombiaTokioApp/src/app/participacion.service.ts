@@ -66,4 +66,18 @@ export class ParticipacionService {
       });
     return of(this.comentarios);
     }
+
+    createComentario(mensaje: string, user_id: number, part_id: number): Observable<Comentario[]>{
+    this.httpClient.post(`${this.API_URL}/deportistas/`+user_id+`/participaciones/`+part_id+'/video/comentarios', mensaje).subscribe((data: Array<any>) => {
+      data.forEach(dataItem => {
+      let comment = new Comentario();
+          comment.id = dataItem.id;
+          comment.autor = dataItem.username;
+          comment.texto = dataItem.texto;
+          comment.fecha = dataItem.fecha;
+          this.comentarios.push(comment);
+      });
+    });
+    return of(this.comentarios);
   }
+ }

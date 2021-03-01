@@ -10,6 +10,7 @@ from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import status
 from rest_framework.decorators import api_view
+from datetime import date
 
 
 class list_object(APIView):
@@ -159,7 +160,14 @@ def comentarios_list(request, pk, pkP):
         return Response(serializer.data)
 
     elif request.method == 'POST':
-        serializer = DeportistasSerializer(data=request.data)
+        comment = Comentario
+        comment.usuario_registrado=0
+        today = date.today()
+        comment.fecha = today.strftime("%d/%m/%Y")
+        comment.username='Anonymous User'
+        comment.texto=request.data
+        print(comment.texto)
+        serializer = ComentarioSerializer(comment)
         if serializer.is_valid():
             serializer.save()
             return Response(serializer.data, status=status.HTTP_201_CREATED)
