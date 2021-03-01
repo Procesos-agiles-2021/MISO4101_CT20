@@ -18,7 +18,7 @@ class DeporteSerializer(serializers.ModelSerializer):
 class DeportistaSerializer(serializers.ModelSerializer):
     class Meta:
         model = Deportista
-        fields = ('nombre', 'fecha_nacimiento', 'peso', 'estatura', 'entrenador',
+        fields = ('id','nombre', 'fecha_nacimiento', 'peso', 'estatura', 'entrenador',
             'imagen', 'lugar_nacimiento')
 
 
@@ -28,21 +28,20 @@ class ParticipacionSerializer1(serializers.ModelSerializer):
 
     class Meta:
         model = Participacion
-        fields = ('deporte', 'deportista')
+        fields = ('id','deporte', 'deportista')
 
 
 class DeportistasSerializer(serializers.ModelSerializer):
     class Meta:
         model = Deportista
-        fields = [
-            'nombre', 'fecha_nacimiento', 'peso', 'estatura', 'entrenador',
-            'imagen', 'lugar_nacimiento'
-        ]
+        fields = (
+            'id','nombre', 'fecha_nacimiento', 'peso', 'estatura', 'entrenador',
+            'imagen', 'lugar_nacimiento')
 
 
 class ParticipacionSerializer(serializers.ModelSerializer):
     class Meta:
         model = Participacion
-        fields = [
-            'fecha', 'hora', 'deporte', 'deportista', 'modalidad', 'resultado'
-        ]
+        fields = (
+            'id','fecha', 'hora', 'deporte', 'deportista', 'modalidad', 'resultado'
+        )

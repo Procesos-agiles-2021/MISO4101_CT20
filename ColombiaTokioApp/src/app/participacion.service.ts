@@ -18,12 +18,12 @@ export class ParticipacionService {
     this.httpClient.get(`${this.API_URL}/deportistas/`+user_id+`/participaciones`).subscribe((data:  Array<any>) => {
       data.forEach( dataItem => {
         let participacion1 = new Participacion();
-            participacion1.id = dataItem.pk;
-            participacion1.deportista = dataItem.fields.deportista;
-            participacion1.fecha= dataItem.fields.fecha;
-            participacion1.hora = dataItem.fields.hora;
-            participacion1.modalidad = dataItem.fields.modalidad;
-            participacion1.resultado = dataItem.fields.resultado;
+            participacion1.id = dataItem.id;
+            participacion1.deportista = dataItem.deportista;
+            participacion1.fecha= dataItem.fecha;
+            participacion1.hora = dataItem.hora;
+            participacion1.modalidad = dataItem.modalidad;
+            participacion1.resultado = dataItem.resultado;
 
             this.participaciones.push(participacion1)
         });

@@ -4,7 +4,7 @@ export const PARTICIPACIONES: Participacion[] =
 [
   {
     id: 1,
-    user_id: 1,
+    deportista: 1,
     fecha: '27/04/2020',
     hora: '08:30',
     modalidad: 'Peso Pesado',
@@ -13,7 +13,7 @@ export const PARTICIPACIONES: Participacion[] =
   },
   {
     id: 2,
-    user_id: 2,
+    deportista: 2,
     fecha: '27/04/2020',
     hora: '08:30',
     modalidad: 'Peso Pesado',
