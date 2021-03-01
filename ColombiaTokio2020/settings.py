@@ -93,9 +93,9 @@ WSGI_APPLICATION = 'ColombiaTokio2020.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
+        #'ENGINE': 'django.db.backends.sqlite3',
         # 'NAME':  'db.sqlite3',
-        #'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
         #'NAME': os.environ['DB_NAME'],
         #'USER': os.environ['DB_USER'],
         #'PASSWORD': os.environ['DB_PASSWORD'],
