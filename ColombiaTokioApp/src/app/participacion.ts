@@ -2,7 +2,8 @@ import { Video } from './video';
 
 export class Participacion {
     id: number;
-    user_id: number;
+    deportista: number;
+    deporte: number;
     fecha: string;
     hora: string;
     modalidad: string;

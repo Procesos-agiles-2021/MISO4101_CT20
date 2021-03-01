@@ -8,6 +8,10 @@ urlpatterns = [
     path('calendario/', views.calendario_list),
     path('calendario/<int:pk>', views.calendar_detail),
     path('deportistas/', views.deportista_list),
+    path('deportistas/<int:pk>', views.deportist_detail),
+    path('deportistas/<int:pk>/participaciones', views.deportist_detail),
+
+
     #path('deportistas/<int:pk>', views.deportist_detail),
     #url(r'adduser/$', views.add_user, name='addUser'),
     #path('calendario/', views.calendario_list),

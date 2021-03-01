@@ -1,7 +1,13 @@
 <h2>Deportistas</h2>
 <ul class = "deportistas">
   <li *ngFor="let deportista of deportistas" routerLink = "{{deportista.id}}">
-    <img src = "{{deportista.imagen}}" width = "100%" height = "100%" />
+    <div class="card">
+      <img src="{{deportista.imagen}}" alt="Avatar" style="width:100%">
+      <div class="container">
+        <h4><b>{{deportista.nombre}}</b></h4>
+        <p>{{deportista.fecha_nacimiento}}</p>
+      </div>
+    </div>
   </li>
 </ul>
 

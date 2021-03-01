@@ -2,7 +2,7 @@ import { Lugar } from './lugar';
 
 export class Deportista {
    id: number;
-   user: string;
+   nombre: string;
    fecha_nacimiento: string;
    peso: number;
    estatura: number;

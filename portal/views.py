@@ -2,7 +2,7 @@ from django.shortcuts import render
 from django.urls import reverse
 from django.http import HttpResponse, HttpResponseRedirect
 from .models import Participacion, Deportista
-#from .models import Participacion, UserForm
+# from .models import Participacion, UserForm
 from .serializers import ParticipacionSerializer, DeportistaSerializer, DeportistasSerializer
 from django.shortcuts import redirect
 from rest_framework.renderers import TemplateHTMLRenderer
@@ -18,14 +18,13 @@ class list_object(APIView):
     template_name = 'participacion.html'
 
     def get(self, request):
-
         queryset = Participacion.objects.all()
         context = {'object': queryset}
         # print(context['object'][0])
         return Response(context)
 
 
-#def add_user(request):
+# def add_user(request):
 #    if request.method == 'POST':
 #        form = UserForm(request.POST)
 #        if form.is_valid():
@@ -42,7 +41,6 @@ def redirect_to_auth(request):
 
 @api_view(['GET', 'POST'])
 def calendario_list(request):
-
     if request.method == 'GET':
         calendars = Participacion.objects.all()
         serializer = ParticipacionSerializer(calendars, many=True)
@@ -77,7 +75,6 @@ def calendar_detail(request, pk):
 
 @api_view(['GET', 'POST'])
 def deportista_list(request):
-
     if request.method == 'GET':
         deportists = Deportista.objects.all()
         serializer = DeportistasSerializer(deportists, many=True)
@@ -88,7 +85,7 @@ def deportista_list(request):
         if serializer.is_valid():
             serializer.save()
             return Response(serializer.data, status=status.HTTP_201_CREATED)
-        #return Response(serializer.error, status=status.HTTP_400_BAD_REQUEST)
+        # return Response(serializer.error, status=status.HTTP_400_BAD_REQUEST)
 
 
 @api_view(['GET', 'PUT'])
@@ -108,3 +105,16 @@ def deportist_detail(request, pk):
             serializer.save()
             return Response(serializer.data)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+
+@api_view(['GET'])
+def participaciones_list(request, pk):
+    try:
+        deportist = Deportista.objects.get(pk=pk)
+    except Deportista.DoesNotExist:
+        return Response(status=status.HTTP_400_BAD_REQUEST)
+
+    if request.method == 'GET':
+        partipaciones = Participacion.objects.filter(deportista=deportist)
+        serializer = ParticipacionSerializer([partipaciones], many=True)
+        return Response(serializer.data)

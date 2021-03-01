@@ -8,6 +8,9 @@ import { DeportistasComponent } from './deportistas/deportistas.component';
 import { DeportistasDetailComponent } from './deportistas-detail/deportistas-detail.component';
 import {VideoPlayerComponent} from "./video-player/video-player.component";
 import {YouTubePlayerModule} from '@angular/youtube-player';
+import { HttpClientModule } from '@angular/common/http';
+
+
 
 
 @NgModule({
@@ -21,7 +24,8 @@ import {YouTubePlayerModule} from '@angular/youtube-player';
     BrowserModule,
     AppRoutingModule,
     YouTubePlayerModule,
-    FormsModule
+    FormsModule,
+    HttpClientModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -18,7 +18,8 @@ class DeporteSerializer(serializers.ModelSerializer):
 class DeportistaSerializer(serializers.ModelSerializer):
     class Meta:
         model = Deportista
-        fields = ('nombre', 'imagen')
+        fields = ('nombre', 'fecha_nacimiento', 'peso', 'estatura', 'entrenador',
+            'imagen', 'lugar_nacimiento')
 
 
 class ParticipacionSerializer1(serializers.ModelSerializer):
