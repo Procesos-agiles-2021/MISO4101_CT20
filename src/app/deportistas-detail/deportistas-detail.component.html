@@ -1,14 +1,15 @@
 <div *ngIf="deportista">
   <img src="{{deportista.imagen}}" width="40%" height="40%" />
-    <h2>{{deportista.user | uppercase}}</h2>
+    <h2>{{deportista.nombre | uppercase}}</h2>
     <div>
       <label>Fecha de nacimiento: {{deportista.fecha_nacimiento}}</label><br />
       <label>Estatura: {{deportista.estatura}} cm</label><br />
       <label>Peso: {{deportista.peso}} kg</label><br />
       <label>Entrenador: {{deportista.entrenador}}</label><br />
     </div>
-    <li *ngFor="let participa of participacion" routerLink = "{{deportista.id}}">
-      <iframe id='player' type='text/html' width='400' height='200' [src]="cleanURL(participa.video)"  frameborder='0'></iframe>
+    <h3>Participaciones:</h3>
+    <li *ngFor="let participa of participacion">
+      <a routerLink = "/deportistas/{{deportista.id}}/participaciones/{{participa.id}}">{{participa.fecha}} - {{participa.hora}}</a>
     </li>
 </div>
 
