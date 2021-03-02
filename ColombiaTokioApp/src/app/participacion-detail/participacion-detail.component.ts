@@ -10,6 +10,7 @@ import {ParticipacionService} from "../participacion.service";
 
 import {DeportistaService} from '../deportista.service';
 import {DomSanitizer, SafeUrl} from "@angular/platform-browser";
+import { HttpClient } from '@angular/common/http';
 
 
 @Component({
@@ -23,18 +24,23 @@ export class ParticipacionDetailComponent implements OnInit {
   @Input() participacion: Participacion;
   @Input() videos: Video[];
   @Input() comentarios: Comentario[];
-  form: FormGroup;
 
+  form: FormGroup;
+  API_URL  =  'https://colombia-tokio.herokuapp.com/';
   constructor(
     private route: ActivatedRoute,
     private deportistaService: DeportistaService,
     private participacionService: ParticipacionService,
     private location: Location,
     private sanitizer: DomSanitizer,
+    private formBuilder: FormBuilder,
+    private http: HttpClient,
     public fB: FormBuilder
-  ) { this.form = this.fB.group({
+  ) {
+    this.form = this.fB.group({
       mensaje: ['']
-    })}
+    })
+   }
 
   ngOnInit(): void {
     this.getDeportista();
@@ -74,13 +80,18 @@ export class ParticipacionDetailComponent implements OnInit {
 
   createComentario(): void {
     var formData: any = new FormData();
+    console.log("Crear comentario")
     formData.append("mensaje", this.form.get('mensaje').value)
     const id = +this.route.snapshot.paramMap.get('id');
     const idP = +this.route.snapshot.paramMap.get('idP');
     console.log(JSON.stringify(formData))
-    this.participacionService.createComentario(JSON.stringify(formData),id,idP).subscribe(comentarios => this.comentarios = comentarios)
+    // this.participacionService.createComentario(formData,id,idP)
+    console.log(formData)
+    this.http.post(`${this.API_URL}/deportistas/`+id+`/participaciones/`+idP+'/video/comentarios', formData).subscribe(
+      (response) => console.log(response),
+      (error) => console.log(error)
+    )
   }
-
   goBack(): void {
     this.location.back();
  }

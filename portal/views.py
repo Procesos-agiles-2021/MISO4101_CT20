@@ -157,17 +157,30 @@ def comentarios_list(request, pk, pkP):
     if request.method == 'GET':
         comments = Comentario.objects.filter(video=video[0])
         serializer = ComentarioSerializer(comments, many=True)
-        return Response(serializer.data)
+        return Response(serializer.data, status=status.HTTP_200_OK)
 
     elif request.method == 'POST':
-        comment = Comentario
-        comment.usuario_registrado=0
+        # comment = Comentario
+        # comment.usuario_registrado=0
         today = date.today()
-        comment.fecha = today.strftime("%d/%m/%Y")
-        comment.username='Anonymous User'
-        comment.texto=request.data
-        print(comment.texto)
-        serializer = ComentarioSerializer(comment)
+        # comment.fecha = today.strftime("%d/%m/%Y")
+        # comment.username='Anonymous User'
+        # comment.texto=request.data.get('mensaje')
+        # print(comment.texto)
+        print(today.strftime("%d-%m-%YT%H:%M"))
+        comement = {
+            "usuario_registrado": 0,
+            "fecha" :today.strftime("%Y-%m-%dT%H:%M"),
+            "username": "Anonymous User",
+            "texto": request.data.get('mensaje'),
+            "video" : 1
+        }
+        print(comement)
+
+        serializer = ComentarioSerializer(data = comement)
+        print(serializer)
         if serializer.is_valid():
             serializer.save()
             return Response(serializer.data, status=status.HTTP_201_CREATED)
+        else:
+            return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)

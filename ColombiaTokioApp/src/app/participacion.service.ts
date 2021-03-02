@@ -11,7 +11,7 @@ import {Video} from "./video";
 })
 export class ParticipacionService {
 
-  API_URL  =  'http://localhost:8000';
+  API_URL  =  'https://colombia-tokio.herokuapp.com/';
   private participaciones: Array<Participacion>;
   private videos: Array<Video>;
   private comentarios: Array<Comentario>;
@@ -67,17 +67,11 @@ export class ParticipacionService {
     return of(this.comentarios);
     }
 
-    createComentario(mensaje: string, user_id: number, part_id: number): Observable<Comentario[]>{
-    this.httpClient.post(`${this.API_URL}/deportistas/`+user_id+`/participaciones/`+part_id+'/video/comentarios', mensaje).subscribe((data: Array<any>) => {
-      data.forEach(dataItem => {
-      let comment = new Comentario();
-          comment.id = dataItem.id;
-          comment.autor = dataItem.username;
-          comment.texto = dataItem.texto;
-          comment.fecha = dataItem.fecha;
-          this.comentarios.push(comment);
-      });
-    });
-    return of(this.comentarios);
+    createComentario(mensaje: string, user_id: number, part_id: number): void{
+    this.httpClient.post(`${this.API_URL}/deportistas/`+user_id+`/participaciones/`+part_id+'/video/comentarios', mensaje).subscribe(
+      (response) => console.log(response),
+      (error) => console.log(error)
+    )
   }
+  
  }
