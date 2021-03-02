@@ -11,7 +11,7 @@ import {Video} from "./video";
 })
 export class ParticipacionService {
 
-  API_URL  =  'https://colombia-tokio.herokuapp.com/';
+  API_URL  =  'https://colombia-tokio.herokuapp.com';
   private participaciones: Array<Participacion>;
   private videos: Array<Video>;
   private comentarios: Array<Comentario>;
@@ -73,5 +73,5 @@ export class ParticipacionService {
       (error) => console.log(error)
     )
   }
-  
+
  }

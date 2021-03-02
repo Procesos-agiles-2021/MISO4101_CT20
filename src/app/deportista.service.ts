@@ -13,7 +13,7 @@ export class DeportistaService {
   constructor(private  httpClient:  HttpClient
     ) { }
 
-  API_URL  =  'https://colombia-tokio.herokuapp.com/';
+  API_URL  =  'https://colombia-tokio.herokuapp.com';
   private deportistas: Array<Deportista>;
 
   getDeportistas(): Observable<Deportista[]>{
