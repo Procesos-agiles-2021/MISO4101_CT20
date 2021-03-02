@@ -26,7 +26,7 @@ export class ParticipacionDetailComponent implements OnInit {
   @Input() comentarios: Comentario[];
 
   form: FormGroup;
-  API_URL  =  'https://colombia-tokio.herokuapp.com/';
+  API_URL  =  'https://colombia-tokio.herokuapp.com';
   constructor(
     private route: ActivatedRoute,
     private deportistaService: DeportistaService,
