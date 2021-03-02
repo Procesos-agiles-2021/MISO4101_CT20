@@ -30,7 +30,7 @@ export class DeportistasDetailComponent implements OnInit {
 
   ngOnInit(): void {
     this.getDeportista();
-    this.getParticipacion();
+    this.getParticipaciones();
 
   }
   cleanURL(oldURL ): SafeUrl {
@@ -43,7 +43,7 @@ export class DeportistasDetailComponent implements OnInit {
       .subscribe(deportista => this.deportista = deportista);
   }
 
-  getParticipacion(): void {
+  getParticipaciones(): void {
     const id = +this.route.snapshot.paramMap.get('id');
     this.participacionService.getParticipaciones(id)
       .subscribe(participacion => this.participacion = participacion);

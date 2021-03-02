@@ -91,9 +91,10 @@ WSGI_APPLICATION = 'ColombiaTokio2020.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.1/ref/settings/#databases
 
+
 DATABASES = {
     'default': {
-        # 'ENGINE': 'django.db.backends.sqlite3',
+        #'ENGINE': 'django.db.backends.sqlite3',
         # 'NAME':  'db.sqlite3',
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
         'NAME': os.environ['DB_NAME'],
@@ -101,9 +102,13 @@ DATABASES = {
         'PASSWORD': os.environ['DB_PASSWORD'],
         'HOST': os.environ['DB_HOST'],
         'PORT': os.environ['DB_PORT'],
+        # 'NAME': 'miso4101',
+        # 'USER': 'jdruedaa',
+        # 'PASSWORD': 'Abcd123#',
+        # 'HOST': 'localhost',
+        # 'PORT': '',
     }
 }
-
 # Password validation
 # https://docs.djangoproject.com/en/3.1/ref/settings/#auth-password-validators
 

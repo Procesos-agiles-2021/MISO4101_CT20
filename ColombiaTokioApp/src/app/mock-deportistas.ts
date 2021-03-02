@@ -4,7 +4,7 @@ export const DEPORTISTAS: Deportista[] =
 [
   {
     id: 1,
-    user: 'Óscar Figueroa',
+    nombre: 'Óscar Figueroa',
     fecha_nacimiento: '27/04/1983',
     peso: 62,
     estatura: 165,
@@ -14,7 +14,7 @@ export const DEPORTISTAS: Deportista[] =
   },
   {
     id: 2,
-    user: 'Rogelio Rios',
+    nombre: 'Rogelio Rios',
     fecha_nacimiento: '27/04/1983',
     peso: 60,
     estatura: 170,

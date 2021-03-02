@@ -16,7 +16,7 @@ class Lugar(models.Model):
 
 
 class Deportista(models.Model):
-    user = models.OneToOneField(to=User, on_delete=models.CASCADE, primary_key=True, verbose_name='Usuario')
+    nombre = models.CharField(max_length=100)
     fecha_nacimiento = models.DateField(verbose_name='Fecha de Nacimiento')
     peso = models.FloatField(validators=[MinValueValidator(0.0)], help_text='Peso del Deportista')
     estatura = models.FloatField(validators=[MinValueValidator(0.0)], help_text='Estatura del Deportista')
@@ -28,7 +28,7 @@ class Deportista(models.Model):
         verbose_name_plural = 'Deportistas'
 
     def __str__(self) -> str:
-        return f'{self.user.first_name} {self.user.last_name}'
+        return f'{self.nombre} '
 
 
 # class UsuarioRegistrado(models.Model):
@@ -51,7 +51,7 @@ class Deportista(models.Model):
 #        model = UsuarioRegistrado
 #        fields = ['login', 'password', 'first_name', 'last_name', 'email', 'phoneNum']
 
-#class UserForm(ModelForm):
+# class UserForm(ModelForm):
 #    class Meta:
 #        model = User
 #        fields = ['username', 'password', 'first_name', 'last_name', 'email']
@@ -80,9 +80,6 @@ class Participacion(models.Model):
     class Meta:
         verbose_name_plural = 'Participaciones'
 
-    def __str__(self) -> str:
-        return f'{self.deporte} - {self.deportista}'
-
 
 class Video(models.Model):
     url = models.URLField(verbose_name="Video", help_text="URL del video")
@@ -98,6 +95,7 @@ class Video(models.Model):
 class Comentario(models.Model):
     texto = models.CharField(max_length=1000)
     usuario_registrado = models.ForeignKey(User, on_delete=models.CASCADE)
+    username = models.CharField(max_length = 250)
     fecha = models.DateTimeField(null=False)
     video = models.ForeignKey(Video, on_delete=models.CASCADE)
 
